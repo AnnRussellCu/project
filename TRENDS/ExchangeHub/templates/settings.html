@@ -1,0 +1,143 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Settings</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&family=Inknut+Antiqua:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+        }
+        .bg-adnu {
+            background-color: #0055AF;
+            color: white;
+        }
+        .header {
+            padding: 0.75rem 2rem;
+            display: flex;
+            align-items: center;
+            height: 80px; /* Same height as wishlist */
+            background-color: #0055AF; /* Ensure background color is applied here */
+            color: white; /* Ensure text color is white */
+            justify-content: space-between; /* Keep existing spacing */
+        }
+        .header img.logo {
+            height: 50px;
+        }
+        .header h1 {
+            font-family: 'Inknut Antiqua', serif;
+            font-size: 1.8rem; /* Same font size as wishlist */
+            margin: 0;
+            line-height: 1.2;
+            flex-grow: 1;
+            text-align: center;
+        }
+        .header .icons a {
+            color: white;
+            font-size: 1.4rem;
+            margin-left: 1.2rem;
+            text-decoration: none;
+        }
+        .header .icons a:hover {
+            color: #cccccc;
+        }
+        /* New style for the settings icon */
+        .header i {
+            font-size: 1.4rem;
+            margin-right: 1rem; /* Add some spacing if needed */
+        }
+        .form-section-title {
+            color: #373737;
+            font-size: 24px;
+            font-weight: bold;
+            letter-spacing: 0.13em;
+            margin-top: 20px;
+            margin-bottom: 15px;
+        }
+        .form-label-custom {
+            color: rgba(0, 0, 0, 0.50);
+            font-size: 16px;
+            letter-spacing: 0.13em;
+            margin-bottom: 5px;
+            display: block;
+        }
+        .btn-adnu {
+            background-color: #0055AF;
+            color: white;
+            border-color: #0055AF;
+        }
+        .btn-adnu:hover {
+            background-color: #00448f;
+            border-color: #00448f;
+        }
+        .settings-section {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+  <header class="header bg-adnu">
+    <div class="d-flex align-items-center">
+        <img src="/static/images/logo.png" alt="ADNU Exchange Hub Logo" class="logo">
+        <h1 class="ms-3">SETTINGS</h1>
+    </div>
+    <div class="icons">
+        <a href="/wishlist" title="Wishlist"><i class="fas fa-heart"></i></a>
+        <a href="/cart" title="Cart"><i class="fas fa-shopping-cart"></i></a>
+        <a href="/profile" title="Profile"><i class="fas fa-user"></i></a>
+    </div>
+</header>
+
+    <div class="container mt-4">
+        <div class="settings-section">
+            <h2 class="form-section-title">User Management</h2>
+            <form>
+                <div class="mb-3">
+                    <label for="name" class="form-label-custom">Name</label>
+                    <input type="text" class="form-control" id="name" name="name">
+                </div>
+                <div class="mb-3">
+                    <label for="surname" class="form-label-custom">Surname</label>
+                    <input type="text" class="form-control" id="surname" name="surname">
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label-custom">Email address</label>
+                    <input type="email" class="form-control" id="email" name="email">
+                </div>
+                <button type="submit" class="btn btn-adnu rounded-pill px-4">Save</button>
+            </form>
+        </div>
+
+        <div class="settings-section">
+            <h2 class="form-section-title">Notifications</h2>
+            <p class="form-label-custom">AdNU will send you notifications</p>
+        </div>
+
+        <div class="settings-section">
+            <h2 class="form-section-title">Deactivate account</h2>
+            <p class="form-label-custom">If you no longer want to receive emails..</p>
+            <button class="btn btn-danger rounded-pill px-4">Deactivate</button>
+        </div>
+
+        <div class="settings-section text-end">
+            <form action="/logout/" method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-secondary rounded-pill px-4">Logout</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
